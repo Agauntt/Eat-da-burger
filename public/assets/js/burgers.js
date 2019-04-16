@@ -26,10 +26,9 @@ $(function() {
 
     $(".create-form").on("submit", function(event) {
         event.preventDefault();
-
-        var name = $("[name=burger-name]").val().trim();
-
+            name = $("#new-burger").val().trim();
         if(name !== "") {
+            console.log("theres stuff here");
             var newBurger = {
                 name: name
             };
@@ -39,12 +38,12 @@ $(function() {
                 type: "POST",
                 data: newBurger
             }).then(function() {
-   
+                console.log("you did the thing!");
                 location.reload();
             });
         }
         else {
-            $("[name=burger-name]").val("");
+            alert("Please input a new burger first");
         }
     }); 
 });
