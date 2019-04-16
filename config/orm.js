@@ -39,19 +39,12 @@ var orm = {
           cb(result);
         });
       },
-      updateOne: function(table, objColVals, condition, cb) {
-        var queryString = "UPDATE " + table;
-        queryString += " SET ";
-        queryString += objToSql(objColVals);
-        queryString += " WHERE ";
-        queryString += condition;
-
-        console.log(queryString);
-
-        connection.query(queryString, function(err, result) {
-            if (err) {
-                throw err
-            }
+      update: function(table, objColVals, condition, cb){
+        console.log(condition);
+        var queryString = "UPDATE ?? set " + objToSql(objColVals) + " where " + condition;
+        connection.query(queryString, table, function(err,result){
+            if (err)
+                throw err;
             cb(result);
         });
     },

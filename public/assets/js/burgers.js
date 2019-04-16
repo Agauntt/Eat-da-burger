@@ -1,23 +1,15 @@
 $(function() {
     $(".devour-it").on("click", function(event) {
         var id = $(this).data("id");
-        var currentdev = $(this).data("newdev");
-        var newdev;
-        
-        if (currentdev == 0){
-            newdev = 1;
-        } else {
-            newdev = 0;
-        }
+        console.log(id);
 
-        var newDevState = {
-            id: id,
-            devoured: newdev
-        };
+        var munch = {
+            devoured: true
+        }
 
         $.ajax("/api/burgers/" + id, {
             type: "PUT",
-            data: newDevState
+            data: munch
         }).then(function() {
 
             location.reload();
